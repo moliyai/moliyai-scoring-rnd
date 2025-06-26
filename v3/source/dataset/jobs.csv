@@ -1,0 +1,424 @@
+id,jobs
+1,ish lavozimi
+2,polkovnik
+3,podpolkovnik
+4,mayor
+5,kapitan
+6,inspektor
+7,katta leytenant
+8,kichik leytenant
+9,inspektor yordamchisi
+10,starshina
+11,safdor
+12,soxchi
+13,brigadir
+14,rektor
+15,prorektor
+16,dekan
+17,zam dekan
+18,kafedra mudiri
+19,chilangar
+20,elektrik
+21,xaydovchi
+22,mashinist
+23,katta xamshira
+24,kichik xamshira
+25,sanitarka
+26,sanitar
+27,lor
+28,travmatolog
+29,urolog
+30,ginekolog
+31,xirurg (jarrox)
+32,nevropatolog
+33,xujalik mudiri
+34,kassir
+35,xokim yordamchisi
+36,zam xokim
+37,bogbon
+38,аxborot kommunikatsiya xodimi
+39,tadbirkorlik bulimi boshligi
+40,tadbirkorlik bulim mutaxassisi
+41,xotin kizlar jamgarmasi boʼlimi
+42,sektor raxbari
+43,yoshlar bilan ishlash bulimi xodimi
+44,iktisod bulimi xodimi
+45,filial raxbari
+46,iktisodiy masalalar urinbosari
+47,bosh injener
+48,bosh xisobchi
+49,texnika xavfsizlik bulimi boshligi
+50,ichb bulimi boshligi
+51,mijozlar bulimi boshligi
+52,metrologiya bulimi boshligi
+53,bosh energetik
+54,bosh mexanik
+55,ichimlik suvi bulimi xodimi
+56,suvokava bulimi boshligi
+57,ichimlik suvi bulimi chilangari
+58,ichb muxandis texnolog
+59,аxoli nazoratchisi
+60,noturar tashkilot nazoratchisi
+61,tozalash bulimi boshligi
+62,tozalash bulimi chilangari
+63,аvto xujalik bulimi boshligi
+64,sekretar
+65,elektrik chilangar
+66,nazoratchi xodim
+67,texnik kurik nazoratchi xodimi
+68,gaz kuvirlari nazoratchisi
+69,pto bulimi xodimi (proizvodstvenno-texnicheskiy otdel)
+70,nazoratchi bulimi boshligi
+71,uxb bulimi xodimi
+72,laboratoriya xodimi
+73,mijozlarga xizmat kursatish xodimi
+74,kabulxona xodimi
+75,04 аvariynыy slujba xodimlari
+76,koll sentr xodimi
+77,maxalla raisi
+78,maxalla posboni
+79,kotiba
+80,xotin-kizlar bulimi xodimi
+81,jamoatchilik xodimi
+82,posbon yordamchisi
+83,raxbar urinbosari
+84,ijrochi xodim
+85,solik inspektsiya boshligi
+86,raxbar 1-urinbosari
+87,raxbar 2-urinbosari
+88,kamera nazorat xodimi
+89,savdogar
+90,yuridik shaxslar bilan ishlash bulim xodimi
+91,jismoniy shaxslar bilan ishlash bulimi xodimi
+92,navbatchi bulimi xodimi
+93,solik statistikasi bulimi xodimi
+94,yatt bulimi xodimi
+95,terminallar bilan ishlash bulimi xodimi
+96,deklaratsiya bulimi xodimi
+97,boshkaruvchi
+98,boshkaruvchi urinbosari
+99,yurist
+100,glavnыy buxgalter
+101,materialьnыy buxgalter
+102,glavnыy buxgalter urin bosari
+103,kassa mudirasi
+104,kassa mutaxassisi
+105,kredit bulimi boshligi
+106,kredit bulimi bosh mutaxassisi
+107,mutaxassis
+108,kredit bulimi xodimi
+109,plastik bulimi boshligi
+110,denejnыy bulimi boshligi
+111,denejnыy bulimi xodimi
+112,omonat bulimi boshligi
+113,omonat bulimi mutaxassisi
+114,vаsh nazoratchisi
+115,vаsh kassiri
+116,xpu nazoratchisi
+117,xpu kassiri
+118,direktor
+119,xisobchi
+120,аktyor
+121,аktrisa
+122,madaniyat xodimi
+123,zavxoz
+124,rassom
+125,sozanda
+126,xonanda
+127,rakkosa
+128,rejissyor
+129,dirijyor
+130,radist
+131,telefonist
+132,аdministrator
+133,zal nazoratchisi
+134,shoir
+135,dramaturg
+136,аdabiy emakdosh
+137,oddiy ishchi
+138,xaydovchi yordamchisi
+139,nazoratchi
+140,аxborot kutubxona mudiri
+141,mudir urinbosari
+142,biograf
+143,bolalar bulimi xodimi
+144,аxborot texnologiya bulimi xodimi
+145,badiiy adabiyotlar bilan ishlash xodimi
+146,xtb mudiri
+147,kadrlar bulimi boshligi
+148,malaka oshirish mutaxassisi
+149,ekonomist
+150,kasaba uyushma raisi
+151,statist
+152,аkm mutaxassisi
+153,аkt mutaxassisi
+154,1-bulim boshligi
+155,2-bulim boshligi
+156,bosh mutaxassis
+157,katta mutaxassis
+158,yetakchi
+159,direktor urinbosari
+160,kadrlar buyicha bosh inspektor
+161,shaxsiy xafsizlik bulimi xodimi
+162,ichki audit xizmati xodimi
+163,yuristkonsulьtant
+164,1-bulim xodimi
+165,ishlar boshkarmasi xodimi
+166,davlat organlari va tashkilotlar ochikligini taʼminlash boshkarmasi xodimi
+167,tizimli taxlil va prognozlar bulimi boshligi
+168,korruptsiyani oldini olish va komplekt nazorat tizimi joriy etish bulim boshligi
+169,davlat xizmatchilarini daromadlarini urganish bulimi xodimi
+170,mudira
+171,ombor mudiri
+172,kir yuvuvchi
+173,duradgor
+174,santexnik
+175,kadrlar bilan ishlash bulimi mudiri
+176,muxandis
+177,texnik xizmat kursatish bulimi
+178,ekspeditor
+179,loyixachi bulimi xodimi
+180,burgulovchi bulim xodimi
+181,glavnыy mexanik
+182,mexanik
+183,glavnыy elektrik
+184,nachalьnik korovul
+185,navbatchi mutaxassis
+186,3-xudud xodimi
+187,pojarnыy xodim
+188,taʼlim bulim mutaxassisi
+189,iib bulimi mutaxassisi
+190,prokuror katta yordamchisi
+191,kadrlar bulimi xodimi
+192,voenkom
+193,zam voenkom
+194,vatanparvar bulim boshligi
+195,vatanparvar bulim xodimi
+196,muddatli xarbiy xizmat bulimi xodimi
+197,safarbarlik chakiruv bulimi xodimi
+198,navbatchi xodim
+199,sekretnыy bulimi xodimi
+200,аrxivnыy bulimi xodimi
+201,zam direktor
+202,zavuch
+203,ukituvchi
+204,chilangar santexnik usta
+205,kachigar
+206,zavotdel
+207,monitoring bulimi xodimi
+208,xat tashuvchi (elituvchi)
+209,boshlik
+210,sanitariya ishlari buyicha vrach urinbosari
+211,epidemiologik vrach urinbosari
+212,bulim mudiri
+213,bulinmalar mudiri
+214,laboratoriya mudiri
+215,epidemiolog vrach
+216,sanitariya vrachi
+217,yordamchi vrachlar
+218,omborchi
+219,gisht teruvchi
+220,gisht kuyuvchi
+221,suvokchi
+222,buyokchi
+223,kafelchi
+224,betonchi
+225,eshik-romchi
+226,аkfachi
+227,temirchi
+228,paxsachi
+229,kudukchi
+230,mebelchi
+231,motor
+232,xodovoy
+233,karbyuratorchi
+234,kuzovchi
+235,polik chexol
+236,razvalchi
+237,metan gazchi
+238,аvto pardozchi
+239,moyka-ximchistka
+240,balansirovkachi
+241,moy almashtiruvchi
+242,xususiy mashina
+243,liniyada katnovchi
+244,elituvchi
+245,traktorchi
+246,kamazchi
+247,samasvalchi
+248,kombaynchi
+249,motorolchi
+250,labochi
+251,evakuatorchi
+252,kranchi
+253,galla
+254,chorva
+255,parranda
+256,gul yetishtirish
+257,issikxonalar
+258,xumdon
+259,gulchi
+260,kiyim sex
+261,paypok sex
+262,palьto sex
+263,brija
+264,mayka
+265,sovun
+266,gelь
+267,kop
+268,un
+269,oziq-ovqat sotuvchisi
+270,аlkogolь
+271,optom suv
+272,poliz ekinlari
+273,chorva ozuka
+274,dorixona
+275,umumiy ovkatlanish
+276,kassobxona
+277,kosibxona
+278,kurpa-tushak
+279,аvto zapchastь
+280,non
+281,maishiy texnika
+282,uy-ruzgor buyum
+283,kurilish mollari
+284,аvto salon
+285,xususiy bank
+286,kredit savdo
+287,xususiy maktab
+288,xususiy bogcha
+289,vet dorixona
+290,temir panjara
+291,mineral ugitlar
+292,аvto moyka
+293,аvto taʼmirlash
+294,gisht ishlab chikarish
+295,mato ishlab chikarish
+296,telefon taʼmirlash
+297,telefon aksessuar
+298,ukuv markazi
+299,paynet
+300,salon
+301,sartaroshxona
+302,mashk zallari
+303,kibersport uyingoxlar
+304,mini polya
+305,uyda nonvoyxona
+306,аpteka
+307,kantstovar
+308,xul meva
+309,kuruk meva
+310,b/u zapchastь
+311,uruglar
+312,terak
+313,аkfa
+314,mebelь
+315,gusht maxsulotlari
+316,pishirik tort
+317,oyok kiyim
+318,pirojka sotuvchi
+319,mashina sotuvchi
+320,telefon sotuvchi
+321,muzkaymok sotuvchi
+322,"guja, ayron"
+323,tuzlamalar
+324,broker
+325,kuchatlar
+326,chevar
+327,tarbiyachi
+328,enaga
+329,ofitsiant
+330,salonchi
+331,ut yokuvchi
+332,dexkon
+333,texnik
+334,ish yurituvchi
+335,konsulьtant
+336,pishirikchi
+337,nonvoy
+338,tarjimon
+339,kredit xodim
+340,undiruvchi
+341,аvto taʼmirlovchi
+342,chorva bokuvchi
+343,kosib
+344,tabib
+345,folbin
+346,yollanma ishchi
+347,sartarosh
+348,maishiy texnika ustasi
+349,fotosalonchi
+350,tuy bazim videochi
+351,somsachi
+352,pirojkachi
+353,sportchi
+354,uy xamshira
+355,xususiy kuriklash
+356,gidlar
+357,yordamchi tarbiyachi
+358,usta
+359,kichik tibbiyot xodimi
+360,bosh ish yurituvchi
+361,filial ish yurituvchilari
+362,bosh omborchi
+363,yuk kutaruvchi
+364,ovoz operatori
+365,video montaj
+366,programmist
+367,smm
+368,it
+369,dizayner
+370,veb dizayner
+371,foto dizayner
+372,olma
+373,shaftoli
+374,urik
+375,kulupnay
+376,kariyalar
+377,bolalar
+378,nogironlar
+379,kompьyuter
+380,dazmol
+381,magnitafon
+382,kartoshka
+383,tarvuz-kovun
+384,guza
+385,makka
+386,sholi
+387,bugdoy
+388,uy bekasi
+389,piyoz
+390,mosh
+391,loviya
+392,mashina
+393,kiyim-kechak sotuvchi
+394,uy tozalovchi
+395,xayvon bokuvchi
+396,uy kuruvchi
+397,kiyim yuvuvchi
+398,kostyum-shim tikuvchi
+399,kuylak tikuvchi
+400,bolalar kiyimlari
+401,аndozachi
+402,bichuvchi
+403,master
+404,paypok
+405,tungi kiyimlar
+406,ichki kiyimlar
+407,bosh kiyimlar
+408,shkaf
+409,divan
+410,sandik
+411,аvto uchun
+412,ofis mebelь
+413,oshxona
+414,panjaralar
+415,nakkoshlar
+416,stomatolog
+417,terapevt
+418,travmatolog
+419,uzi
+420,rentgenolog
+421,jarrox
+422,kardiolog
+423,rahbar

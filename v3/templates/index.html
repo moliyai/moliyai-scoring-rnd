@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Forest Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        header img {
+            vertical-align: middle;
+        }
+
+        header h2 {
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        form {
+            flex: 1 1 400px;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        form select, 
+        form input[type="number"],
+        form input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        form button,
+        form input[type="reset"] {
+            margin-top: 20px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        form input[type="reset"] {
+            background-color: #f44336;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .prediction-section {
+            flex: 1 1 300px;
+            max-width: 400px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            align-self: flex-start;
+        }
+
+        .prediction-section h3 {
+            color: #333;
+        }
+
+        .prediction-section p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .prediction-section {
+                max-width: 90%;
+            }
+
+            form {
+                max-width: 90%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ request.url_for('static', path='toyona.jpg') }}" alt="toyona" width="50" height="50">
+        <h2>FinScore</h2>
+    </header>
+
+    <div class="container">
+        <form action="/v3/predict/random/forest" method="post">
+            <label>Sex:</label>
+            <select name="sex" required>
+                <option value="">Select</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+            </select>
+
+            <label>Viloyat ID:</label>
+            <select name="viloyat_id" required>
+                <option value="6">Fergana</option>
+            </select>
+
+            <label>Tuman ID:</label>
+            <select name="tuman_id" required>
+                <option value="">Select</option>
+                <option value="194">Qo‘qon</option>
+                <option value="187">Rishton</option>
+                <option value="199">Oltiariq</option>
+                <option value="183">Marg‘ilon</option>
+            </select>
+
+            <label>MFY ID:</label>
+            <select name="mfy_id" required>
+                <option value="">Select</option>
+                <option value="5465">Yangiobod</option>
+                <option value="5287">Istiqbol</option>
+                <option value="5589">Navro‘z</option>
+                <option value="5109">Toshloq</option>
+            </select>
+
+            <label>Client Type:</label>
+            <select name="client_type" required>
+                <option value="">Select</option>
+                <option value="1">New</option>
+                <option value="2">Old</option>
+            </select>
+
+            <label>Job Name:</label>
+            <select name="job_name" required>
+                <option value="">Select</option>
+                <option value="47">Software Engineer</option>
+                <option value="89">Salesman</option>
+                <option value="99">Lawyer</option>
+                <option value="105">Head Credit Department</option>
+                <option value="124">Artist</option>
+                <option value="203">Teacher</option>
+            </select>
+
+            <label>Salary:</label>
+            <input type="number" name="salary" required min="0">
+
+            <label>Total Family Salary:</label>
+            <input type="number" name="total_client_family_salary" required min="0">
+
+            <label>Occupation Status:</label>
+            <select name="occupation_status" required>
+                <option value="">Select</option>
+                <option value="1">Employed</option>
+                <option value="2">Unemployed</option>
+            </select>
+
+            <label>Family Status:</label>
+            <select name="family_status" required>
+                <option value="">Select</option>
+                <option value="1">Married</option>
+                <option value="2">Single</option>
+            </select>
+
+            <label>Family Members Count:</label>
+            <input type="number" name="family_members_count" required min="0">
+
+            <label>Home Type:</label>
+            <select name="home_type" required>
+                <option value="">Select</option>
+                <option value="1">Apartment</option>
+                <option value="2">House</option>
+            </select>
+
+            <label>Home Ownership:</label>
+            <select name="home_owner" required>
+                <option value="">Select</option>
+                <option value="1">Rent</option>
+                <option value="2">Own</option>
+            </select>
+
+            <label>Monthly Expenditure:</label>
+            <input type="number" name="client_monthly_expenditure" required min="0">
+
+            <label>Product Price:</label>
+            <input type="number" name="product_price" required min="0">
+
+            <label>Final Product Price:</label>
+            <input type="number" name="final_produt_price" required min="0">
+
+            <label>Loan Period:</label>
+            <select name="loan_period" required>
+                <option value="12">12 month</option>
+            </select>
+
+            <label>Threshold (0 - 100):</label>
+            <input type="range" name="threshold" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+            <output>0</output>
+
+            <button type="submit">Predict</button>
+            <input type="reset" value="Clear">
+        </form>
+
+        {% if prediction %}
+        <div class="prediction-section">
+            <h3>Status: {{ prediction.prediction_status }}</h3>
+            <p>Approved: {{ prediction.approved }}%</p>
+            <p>Not approved: {{ prediction.not_approved }}%</p>
+            <p>Maximum Available Amount: {{ prediction.maximum_available_amount }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body> 
+</html>
