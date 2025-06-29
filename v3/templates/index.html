@@ -14,9 +14,10 @@
         }
 
         header {
-            background-color: #333;
+            background-color: #f5f5f5;
             color: #fff;
             padding: 10px 20px;
+            border-bottom: 1px solid #d6d2d2;
         }
 
         header img {
@@ -121,8 +122,10 @@
 </head>
 <body>
     <header>
-        <img src="{{ request.url_for('static', path='toyona.jpg') }}" alt="toyona" width="50" height="50">
-        <h2>FinScore</h2>
+        <a href = "/">
+            <img src="{{ request.url_for('static', path='moliy.png') }}" alt="moliy.ai" width="110" height="40">
+        </a>
+        <!-- <h2>FinScore</h2> -->
     </header>
 
     <div class="container">
