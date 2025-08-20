@@ -2,7 +2,7 @@ from fastapi import FastAPI, Form, Request
 from fastapi.templating import Jinja2Templates
 import pandas as pd
 import os
-from db import model, jobs_file, JOB_PATH
+from db import model, label_encoders
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 
@@ -18,7 +18,14 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 
 
+import shap
+import matplotlib.pyplot as plt
+import uuid
+import numpy as np
+import seaborn as sns
 
+if not hasattr(np, "bool"):
+    np.bool = np.bool_
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -71,13 +78,20 @@ def get_prediction(model, data, threshold = 0):
 
 
     df_encoded = input_data.copy()
-    label_encoders = {}
-
-
+   
     for col in categorical_cols:
-        le = LabelEncoder()
-        df_encoded[col] = le.fit_transform(df_encoded[col].astype(str))
-        label_encoders[col] = le
+        if col in label_encoders:
+            le = label_encoders[col]
+            #replace unseen labels with a default value (e.g., 'unknown')
+            df_encoded[col] = df_encoded[col].astype(str).apply(
+                lambda x: x if x in le.classes_ else 'unknown'
+            )
+            #'unknown' to classes_ if not already present
+            if 'unknown' not in le.classes_:
+                le.classes_ = np.append(le.classes_, 'unknown')
+            df_encoded[col] = le.transform(df_encoded[col])
+        else:
+            raise ValueError(f"Нет сохранённого LabelEncoder для колонки {col}")
 
     X = df_encoded[feature_cols]
 
@@ -103,21 +117,61 @@ def get_prediction(model, data, threshold = 0):
     else:
         input_data.to_csv(USER_INPUT_CSV, mode='a', header=False, index=False)
     
+    # === SHAP объяснения ===
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(X)
+
+    X_display = X.copy()
+
+    for col in categorical_cols:
+        le = label_encoders[col]
+        inv = {i: cls for i, cls in enumerate(le.classes_)}
+        X_display[col] = X_display[col].map(lambda v: inv.get(v, v))
+
+    feature_name_map = {
+        "shaped_bread(som)": "хлеб(сум)",
+        "cottonseed oil(som)": "хлопковое масло(сум)",
+        "beef(som)": "говядина(сум)"
+    }
+    X_display = X_display.rename(columns=feature_name_map)
+
+    shap_importance = pd.DataFrame({
+        "feature": X_display.columns,
+        "importance": np.abs(shap_values[1]).mean(axis=0)
+    }).sort_values("importance", ascending=False)
+
+    top10 = shap_importance.head(10)
+
+    shap_bar_filename = f"shap_top10_{uuid.uuid4().hex}.png"
+    shap_bar_filepath = os.path.join("static", shap_bar_filename)
+
+    plt.figure(figsize=(7, 4), dpi=200)
+    sns.barplot(data=top10, y="feature", x="importance", palette="viridis")
+    plt.title("Топ-10 признаков по важности", fontsize=12)
+    plt.xlabel("Важность признаков", fontsize=10)
+    plt.ylabel("Признаки", fontsize=10)
+    plt.tight_layout()
+    plt.savefig(shap_bar_filepath, bbox_inches="tight")
+    plt.close()
+
     return {
         "prediction_status": status,
         "approved %": round(good_prob, 2),
-        "not approved %": round(bad_prob, 2)
+        "not approved %": round(bad_prob, 2),
+        "shap_plot": f"/static/{shap_bar_filename}" 
     }
 
 
 @app.get("/")
-async def form_page(request: Request, prediction_status: str = None, approved: float = None, not_approved: float = None):
+async def form_page(request: Request, prediction_status: str = None, approved: float = None, not_approved: float = None, shap_plot: str = None):
     prediction_data = None
     if prediction_status:
         prediction_data = {
             "prediction_status": prediction_status,
             "approved": approved,
             "not_approved": not_approved,
+            "shap_plot": shap_plot
+            
         }
     
     return templates.TemplateResponse("index.html", {
@@ -143,9 +197,9 @@ def predict_random_forest(
     loan_term: int = Form(...), #срок кредита
     cycle: int = Form(...),
     loan_purpose: str = Form(...),
-    threshold: int = Form(50), 
+    threshold: int = Form(68), 
 ):
-    threshold = 50
+    threshold = 68
     threshold_normalized = threshold / 100.0
   
     client_data = {
@@ -170,6 +224,7 @@ def predict_random_forest(
         "prediction_status": predicted_data['prediction_status'],
         "approved": predicted_data['approved %'],
         "not_approved": predicted_data['not approved %'],
+        "shap_plot": predicted_data['shap_plot']
     }
 
     url = str(request.url_for("form_page")) + "?" + urlencode(query_params)

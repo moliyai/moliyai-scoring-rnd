@@ -31,7 +31,9 @@
 
     /* Results Screen */
     .results-card { max-width: 28rem; }
+    .results-container { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
     .results-header { padding: 2rem 2rem 1.5rem; text-align: center; }
+    .section-title { text-align: center;}
     .results-content { padding: 0 2rem 2rem; }
     .score-display { text-align: center; margin-bottom: 1.5rem; }
     .score-number { font-size: 3rem; font-weight: 700; color: #1e1b50; margin-bottom: 0.5rem; }
@@ -55,7 +57,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container results-container ">
     <!-- Form Screen -->
     <div id="formScreen" class="card {% if prediction %}hidden{% endif %}">
       <div class="card-header">
@@ -89,11 +91,11 @@
               <label class="label">Пол</label>
               <div class="radio-group">
                 <div class="radio-item">
-                  <input type="radio" class="radio-input" name="gender" value="male" id="male" />
+                  <input type="radio" class="radio-input" name="gender" value="м" id="male" />
                   <label for="м">м</label>
                 </div>
                 <div class="radio-item">
-                  <input type="radio" class="radio-input" name="gender" value="female" id="female" />
+                  <input type="radio" class="radio-input" name="gender" value="ж" id="female" />
                   <label for="ж">ж</label>
                 </div>
               </div>
@@ -104,11 +106,11 @@
                 <label class="label">Область\Город</label>
                 <select class="select" name="region" required>
                   <option value="">Выберите регион или город</option>
-                  <option value="фаргона вилояти">фаргона вилояти</option>
-                  <option value="наманган вилояти">наманган вилояти</option>
-                  <option value="андижон вилояти">андижон вилояти</option>
-                  <option value="тошкент шахри">тошкент шахри</option>
-                  <option value="тошкент вилояти">тошкент вилояти</option>
+                  <option value="фаргона вилояти">фергана</option>
+                  <option value="наманган вилояти">наманган</option>
+                  <option value="андижон вилояти">андижан</option>
+                  <option value="тошкент шахри">город Ташкент</option>
+                  <option value="тошкент вилояти">Ташкентсая область</option>
                 </select>
               </div>
 
@@ -116,16 +118,16 @@
                 <label class="label">Регион\Город</label>
                 <select class="select" name="city" required>
                   <option value="">Выберите город</option>
-                  <option value="узбекистон тумани">узбекистон тумани</option>
-                  <option value="фуркат тумани">фуркат тумани</option>
-                  <option value="кува тумани">кува тумани</option>
-                  <option value="чуст тумани">чуст тумани</option>
-                  <option value="кукон шахри">кукон шахри</option>
-                  <option value="дангара тумани">дангара тумани</option>
-                  <option value="учкуприк тумани">учкуприк тумани</option>
-                  <option value="туракургон тумани">туракургон тумани</option>
-                  <option value="учкургон тумани">учкургон тумани</option>
-                  <option value="фаргона тумани">фаргона тумани</option>
+                  <option value="узбекистон тумани">узбекистон(район)</option>
+                  <option value="фуркат тумани">фуркат(район)</option>
+                  <option value="кува тумани">кува(район)</option>
+                  <option value="чуст тумани">чуст(район)</option>
+                  <option value="кукон шахри">кукон(город)</option>
+                  <option value="дангара тумани">дангара(район)</option>
+                  <option value="учкуприк тумани">учкуприк(район)</option>
+                  <option value="туракургон тумани">туракургон(район)</option>
+                  <option value="учкургон тумани">учкургон(район)</option>
+                  <option value="фаргона тумани">фаргона(район)</option>
                 </select>
               </div>
             </div>
@@ -151,16 +153,16 @@
               <label class="label">Должность</label>
               <select class="select" name="job_position" required>
                 <option value="">Выберите тип работы</option>
-                <option value="уста">уста</option>
-                <option value="шифокор">шифокор</option>
-                <option value="шофёр">шофёр</option>
-                <option value="ишчи">ишчи</option>
-                <option value="тикувчи">тикувчи</option>
-                <option value="дехкон">дехкон</option>
-                <option value="нонвой">нонвой</option>
+                <option value="уста">мастер</option>
+                <option value="шифокор">врач</option>
+                <option value="шофёр">водитель</option>
+                <option value="ишчи">рабочий</option>
+                <option value="тикувчи">швея</option>
+                <option value="дехкон">фермер</option>
+                <option value="нонвой">пекарь</option>
                 <option value="оператор">оператор</option>
-                <option value="савдогар">савдогар</option>
-                <option value="хайдовчи">хайдовчи</option>
+                <option value="савдогар">торговец</option>
+                <option value="хайдовчи">шофёр</option>
               </select>
             </div>
           </div>
@@ -216,10 +218,10 @@
               <select class="select" name="loan_purpose" required>
                 <option value="">Выберите цель кредита</option>
                 <option value="миграция">миграция</option>
-                <option value="деҳқончилик">деҳқончилик</option>
-                <option value="чорвачиликни ривожлантириш">чорвачиликни ривожлантириш</option>
-                <option value="ҳунармандчилик">ҳунармандчилик</option>
-                <option value="савдо">савдо</option>
+                <option value="деҳқончилик">фермерство</option>
+                <option value="чорвачиликни ривожлантириш">развитие животноводства</option>
+                <option value="ҳунармандчилик">ремесленничество</option>
+                <option value="савдо">торговля</option>
               </select>
             </div>
           </div>
@@ -229,51 +231,55 @@
       </div>
     </div>
 
-
-  <!-- Result Screen -->
-<div id="resultsScreen" class="card results-card {% if prediction %}{% else %}hidden{% endif %}">
-  <div class="card-header results-header">
-    <h1 class="card-title">Оценка кредитного риска</h1>
-  </div>
-
-  {% if prediction %}
-  <div class="card-content results-content">
-    <div class="score-display">
-      {% if prediction.prediction_status == 'Approved' %}
-        <div class="score-number">{{ prediction.approved | default(0) }}%</div>
-        <div class="score-label">Вероятность хорошего клиента</div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: {{ prediction.approved | default(0) }}%"></div>
+<!-- Result Screen -->
+    <div class="results-container">
+      <div id="resultsScreen" class="card results-card {% if prediction %}{% else %}hidden{% endif %}">
+        <div class="card-header results-header">
+          <h1 class="card-title">Оценка кредитного риска</h1>
         </div>
-        <div class="risk-badge risk-low">Одобрено</div>
-      {% else %}
-        <div class="score-number">{{ prediction.not_approved | default(0) }}%</div>
-        <div class="score-label">Вероятность плохого клиента</div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: {{ prediction.not_approved | default(0) }}%"></div>
-        </div>
-        <div class="risk-badge risk-high">Не одобрено</div>
-      {% endif %}
-    </div>
-
-    <div class="section">
-      <h3 class="section-title">Детали</h3>
-      <div class="form-grid">
-        <div class="kv">
-          <div class="k">Хороший %</div>
-          <div class="v">{{ prediction.approved | default(0) }}%</div>
-        </div>
-        <div class="kv">
-          <div class="k">Плохой %</div>
-          <div class="v">{{ prediction.not_approved | default(0) }}%</div>
-        </div>
+      
+        {% if prediction %}
+        <div class="card-content results-content">
+          <div class="score-display">
+            {% if prediction.prediction_status == 'Approved' %}
+              <div class="score-number">{{ prediction.approved | default(0) }}%</div>
+              <div class="score-label">Вероятность хорошего клиента</div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ prediction.approved | default(0) }}%"></div>
+              </div>
+              <div class="risk-badge risk-low">Одобрено</div>
+            {% else %}
+              <div class="score-number">{{ prediction.not_approved | default(0) }}%</div>
+              <div class="score-label">Вероятность плохого клиента</div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ prediction.not_approved | default(0) }}%"></div>
+              </div>
+              <div class="risk-badge risk-high">Не одобрено</div>
+            {% endif %}
+          </div>
+      
+          <div class="section">
+            <h3 class="section-title">Детали</h3>
+            <div style="display: flex; gap: 40px; justify-content:center;">
+              <span>Хороший: <b>{{ prediction.approved | default(0) }}%</b></span>
+              <span>Плохой: <b>{{ prediction.not_approved | default(0) }}%</b></span>
+            </div>
+          </div>
+        {% endif %}
+      
+        <a href="/" class="try-again-btn">Попробуйте еще раз</a>
       </div>
     </div>
+
+    </br>
+    <!-- SHAP Plot -->
+    {% if prediction.shap_plot %}
+    <div class="card" style="max-width: 80rem; padding: 2rem; text-align: center;">
+      <h3 class="section-title">Почему модель приняла такое решение?</h3>
+      <img src="{{ prediction.shap_plot }}" alt="SHAP plot" style="max-width:100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+    </div>
+    {% endif %}
   </div>
-  {% endif %}
-</div>
-
-
 
 </body>
 </html>
