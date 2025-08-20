@@ -23,6 +23,7 @@ lightgbm = "*"
 graphviz = "*"
 networkx = "*"
 requests = "*"
+shap = "==0.41.0"
 
 [dev-packages]
 ipykernel = "*"

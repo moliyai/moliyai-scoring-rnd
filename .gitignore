@@ -1,8 +1,8 @@
 /v3/source/dataset/
 /v3/source/notebook/balancedRF.ipynb
-
-*.csv
-
 /v3/source/notebook/02_06_2025_ehtirom_df.ipynb
 /v3/source/notebook/02_06_2025_ehtirom_random_forest_rnd.ipynb
 /v3/source/notebook/test_predictions.ipynb
+
+*.csv
+*.png
