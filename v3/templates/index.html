@@ -83,8 +83,10 @@
 
               <div class="form-group">
                 <label class="label">Возраст</label>
-                <input type="number" class="input" name="age" placeholder="Введите возраст"  />
+                <input type="number" class="input" id="age" name="age" placeholder="Введите возраст" min="18" max="65" required />
+                <small id="age-error" style="color: red; display: none;">Возраст должен быть от 18 до 65</small>
               </div>
+
             </div>
 
             <div class="form-group">
@@ -104,30 +106,18 @@
             <div class="form-grid form-grid-2">
               <div class="form-group">
                 <label class="label">Область\Город</label>
-                <select class="select" name="region" required>
+                <select class="select" id="region" name="region" required>
                   <option value="">Выберите регион или город</option>
-                  <option value="фаргона вилояти">фергана</option>
-                  <option value="наманган вилояти">наманган</option>
-                  <option value="андижон вилояти">андижан</option>
-                  <option value="тошкент шахри">город Ташкент</option>
-                  <option value="тошкент вилояти">Ташкентсая область</option>
+                  <option value="фергана">фергана</option>
+                  <option value="наманган">наманган</option>
+                  <option value="андижан">андижан</option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label class="label">Регион\Город</label>
-                <select class="select" name="city" required>
-                  <option value="">Выберите город</option>
-                  <option value="узбекистон тумани">узбекистон(район)</option>
-                  <option value="фуркат тумани">фуркат(район)</option>
-                  <option value="кува тумани">кува(район)</option>
-                  <option value="чуст тумани">чуст(район)</option>
-                  <option value="кукон шахри">кукон(город)</option>
-                  <option value="дангара тумани">дангара(район)</option>
-                  <option value="учкуприк тумани">учкуприк(район)</option>
-                  <option value="туракургон тумани">туракургон(район)</option>
-                  <option value="учкургон тумани">учкургон(район)</option>
-                  <option value="фаргона тумани">фаргона(район)</option>
+                <select class="select" id="city" name="city" required>
+                  <option value="">Сначала выберите область</option>
                 </select>
               </div>
             </div>
@@ -135,7 +125,9 @@
             <div class="form-grid form-grid-2">
               <div class="form-group">
                 <label class="label">Количество членов семьи</label>
-                <input type="number" class="input" name="family_members" placeholder="Введите количество членов семьи" required />
+                <input type="number" class="input" id="family_members" name="family_members" 
+                      placeholder="Введите количество членов семьи" min="1" max="8" required />
+                <small id="family-error" style="color: red; display: none;">Количество членов семьи должно быть от 1 до 8</small>
               </div>
 
               <div class="form-group">
@@ -174,13 +166,18 @@
             <div class="form-grid form-grid-2">
               <div class="form-group">
                 <label class="label">Сумма выдачи (USD)</label>
-                <input type="number" class="input" name="loan_amount" placeholder="Введите сумму кредита" required />
+                <input type="number" class="input" id="loan_amount" name="loan_amount" 
+                      placeholder="Введите сумму кредита" min="100" max="8000" required />
+                <small id="loan-error" style="color: red; display: none;">
+                  Сумма кредита должна быть от 100 до 8000 USD
+                </small>
               </div>
 
               <div class="form-group">
                 <label class="label">Процентная ставка (%)</label>
-                <input type="number" step="0.1" class="input" name="interest_rate" placeholder="Введите процентную ставку" required />
+                <input type="number" class="input" name="interest_rate" value="72" readonly />
               </div>
+
             </div>
 
             <div class="form-grid form-grid-2">
@@ -280,6 +277,87 @@
     </div>
     {% endif %}
   </div>
+
+  <script>
+  const ageInput = document.getElementById("age");
+  const ageError = document.getElementById("age-error");
+
+  ageInput.addEventListener("input", function () {
+    if (this.value < 18 || this.value > 65) {
+      ageError.style.display = "block";
+    } else {
+      ageError.style.display = "none";
+    }
+  });
+
+  const familyInput = document.getElementById("family_members");
+  const familyError = document.getElementById("family-error");
+
+  familyInput.addEventListener("input", function () {
+    if (this.value < 1 || this.value > 8) {
+      familyError.style.display = "block";
+    } else {
+      familyError.style.display = "none";
+    }
+  });
+
+  const loanInput = document.getElementById("loan_amount");
+  const loanError = document.getElementById("loan-error");
+
+  loanInput.addEventListener("input", function () {
+    if (this.value < 100 || this.value > 8000) {
+      loanError.style.display = "block";
+    } else {
+      loanError.style.display = "none";
+    }
+  });
+
+  const cities = {
+    фергана: ["Коканд", "Бешарик", "Учкуприк", "Олтиарик", "Кува", "Яйпан"],
+    андижан: ["Избоскан", "Хужабод", "Кургонтепа", "Баликчи"],
+    наманган: ["Чуст", "Мингбулон", "Норин", "Поп", "Туракургон", "Учкургон", "Янгикургон"]
+  };
+
+  const cityMapping = {
+    "Коканд": "кукон шахри",
+    "Бешарик": "бешарик тумани",
+    "Учкуприк": "учкуприк тумани",
+    "Олтиарик": "олтиарик тумани",
+    "Кува": "кува тумани",
+    "Яйпан": "фаргона тумани",
+    
+    "Избоскан": "избоскан тумани",
+    "Хужабод": "хужаобод тумани",
+    "Кургонтепа": "кургонтепа тумани",
+    "Баликчи": "баликчи тумани",
+    
+    "Чуст": "чуст тумани",
+    "Мингбулон": "мингбулок тумани",
+    "Норин": "норин тумани",
+    "Поп": "поп тумани",
+    "Туракургон": "туракургон тумани",
+    "Учкургон": "учкургон тумани",
+    "Янгикургон": "янгикургон тумани"
+  };
+
+  const regionSelect = document.getElementById("region");
+  const citySelect = document.getElementById("city");
+
+  regionSelect.addEventListener("change", function () {
+    const region = this.value;
+    citySelect.innerHTML = "<option value=''>Выберите город</option>";
+
+    if (cities[region]) {
+      cities[region].forEach(city => {
+        const option = document.createElement("option");
+        option.value = cityMapping[city] || city.toLowerCase(); 
+        option.textContent = city; 
+        citySelect.appendChild(option);
+      });
+    }
+  });
+
+</script>
 
 </body>
 </html>
