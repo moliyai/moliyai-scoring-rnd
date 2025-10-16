@@ -5,55 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Credit Scoring Assessment</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background-color: #f9fafb; }
-    .container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; }
-    .card { background: white; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); width: 100%; max-width: 56rem; }
-    .card-header { padding: 2rem 2rem 1rem; text-align: center; }
-    .card-title { font-size: 1.875rem; font-weight: 700; color: #1e1b50; margin-bottom: 0.5rem; }
-    .card-subtitle { color: #4a4a4a; font-size: 1rem; }
-    .card-content { padding: 0 2rem 2rem; }
-    .section { margin-bottom: 2rem; }
-    .section-title { font-size: 1.25rem; font-weight: 600; color: #1e1b50; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
-    .form-grid { display: grid; gap: 1.5rem; }
-    .form-grid-2 { grid-template-columns: 1fr; }
-    @media (min-width: 768px) { .form-grid-2 { grid-template-columns: 1fr 1fr; } }
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-    .label { font-weight: 500; color: #333; font-size: 0.875rem; }
-    .input, .select { padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
-    .input:focus, .select:focus { outline: none; border-color: #1e1b50; box-shadow: 0 0 0 3px rgba(30, 27, 80, 0.1); }
-    .radio-group { display: flex; gap: 1.5rem; margin-top: 0.5rem; }
-    .radio-item { display: flex; align-items: center; gap: 0.5rem; }
-    .radio-input { width: 1rem; height: 1rem; accent-color: #1e1b50; }
-    .predict-btn { width: 100%; padding: 1rem; font-size: 1.125rem; font-weight: 600; color: white; background: linear-gradient(to right, #1e1b50, #a084d6); border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; margin-top: 1.5rem; }
-    .predict-btn:hover { background: linear-gradient(to right, #2a2660, #b094e6); transform: translateY(-1px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-
-    /* Results Screen */
-    .results-card { max-width: 28rem; }
-    .results-container { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
-    .results-header { padding: 2rem 2rem 1.5rem; text-align: center; }
-    .section-title { text-align: center;}
-    .results-content { padding: 0 2rem 2rem; }
-    .score-display { text-align: center; margin-bottom: 1.5rem; }
-    .score-number { font-size: 3rem; font-weight: 700; color: #1e1b50; margin-bottom: 0.5rem; }
-    .score-label { font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem; }
-    .progress-bar { width: 100%; height: 0.75rem; background-color: #e5e7eb; border-radius: 0.375rem; overflow: hidden; margin-bottom: 1rem; }
-    .progress-fill { height: 100%; background: linear-gradient(to right, #1e1b50, #a084d6); transition: width 0.5s ease; }
-
-    .risk-badge { display: inline-block; padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 1.5rem; }
-    .risk-low { background-color: #dcfce7; color: #166534; }
-    .risk-high { background-color: #fee2e2; color: #991b1b; }
-    .risk-medium { background-color: #fef3c7; color: #92400e; }
-
-    .risk-message { text-align: center; color: #374151; line-height: 1.6; margin-bottom: 1.5rem; }
-    .try-again-btn { display: inline-block; width: 100%; text-align: center; padding: 0.75rem; font-size: 1.125rem; font-weight: 600; color: white; background: linear-gradient(to right, #1e1b50, #a084d6); border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s; text-decoration: none; }
-    .try-again-btn:hover { background: linear-gradient(to right, #2a2660, #b094e6); }
-    .hidden { display: none; }
-    .kv { display: grid; gap: 0.25rem; }
-    .kv .k { font-size: 0.75rem; color: #6b7280; }
-    .kv .v { font-weight: 600; }
-  </style>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
@@ -77,7 +29,7 @@
                 <select class="select" name="marital_status" required>
                   <option value="">Выберите семейное положение</option>
                   <option value="married">женатый</option>
-                  <option value="single">одинокий</option>
+                  <option value="single">не женатый</option>
                 </select>
               </div>
 
@@ -94,11 +46,11 @@
               <div class="radio-group">
                 <div class="radio-item">
                   <input type="radio" class="radio-input" name="gender" value="м" id="male" />
-                  <label for="м">м</label>
+                  <label for="м">мужской</label>
                 </div>
                 <div class="radio-item">
                   <input type="radio" class="radio-input" name="gender" value="ж" id="female" />
-                  <label for="ж">ж</label>
+                  <label for="ж">женский</label>
                 </div>
               </div>
             </div>
@@ -108,9 +60,15 @@
                 <label class="label">Область\Город</label>
                 <select class="select" id="region" name="region" required>
                   <option value="">Выберите регион или город</option>
-                  <option value="фергана">фергана</option>
-                  <option value="наманган">наманган</option>
-                  <option value="андижан">андижан</option>
+                  <option value="наманган вилояти">наманган</option>
+                  <option value="фаргона вилояти">фаргона</option>
+                  <option value="андижон вилояти">андижон</option>
+                  <option value="тошкент шахри">тошкент</option>
+                  <option value="самарканд вилояти">самарканд</option>
+                  <option value="сурхондарё вилояти">сурхондарё</option>
+                  <option value="навоий вилояти">навоий</option>
+                  <option value="сирдарё вилояти">сирдарё</option>
+                  <option value="кашкадарё вилояти">кашкадарё</option>
                 </select>
               </div>
 
@@ -140,21 +98,26 @@
                 </select>
               </div>
             </div>
+            
+          </br>
+            
 
             <div class="form-group">
               <label class="label">Должность</label>
               <select class="select" name="job_position" required>
                 <option value="">Выберите тип работы</option>
-                <option value="уста">мастер</option>
-                <option value="шифокор">врач</option>
-                <option value="шофёр">водитель</option>
-                <option value="ишчи">рабочий</option>
-                <option value="тикувчи">швея</option>
-                <option value="дехкон">фермер</option>
-                <option value="нонвой">пекарь</option>
-                <option value="оператор">оператор</option>
+                <option value="тикувчи">тикувчи</option>
+                <option value="ҳайдовчи">водитель</option>
+                <option value="сотувчи">продавец</option>
                 <option value="савдогар">торговец</option>
-                <option value="хайдовчи">шофёр</option>
+                <option value="нафақахўр">пенсионер</option>
+                <option value="уста">мастер</option>
+                <option value="чорвадор">скотовод</option>
+                <option value="деҳқон">дехканин</option>
+                <option value="қурувчи">строитель</option>
+                <option value="ошпаз">повор</option>
+                <option value="нонвой">пекарь</option>
+                <option value="тадбиркор">бизнесмен</option>
               </select>
             </div>
           </div>
@@ -186,15 +149,20 @@
                 <select class="select" name="loan_term" required>
                   <option value="">Выберите срок кредита</option>
                   <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
                   <option value="11">11</option>
                   <option value="12">12</option>
-                  <option value="13">13</option>
-                  <option value="14">14</option>
                   <option value="15">15</option>
-                  <option value="17">17</option>
                   <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                  <option value="32">32</option>
+                  <option value="36">36</option>
+                  <option value="43">43</option>
                 </select>
               </div>
 
@@ -205,30 +173,80 @@
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
+                  <option value="4">4</option>
                   <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
                 </select>
               </div>
             </div>
+            
+          </br>
+            <div class="form-grid form-grid-2">
+              <div class="form-group">
+                <label class="label">KATM значение</label>
+                <input type="number" class="input" name="katm_value" id = "katm" placeholder="Введите значение KATM" required />
+                <small id="katm-error" style="color: red; display: none;">КАТМ должен быть от 0 до 500</small>
+              </div>
 
-            <div class="form-group">
-              <label class="label">Цель кредита</label>
-              <select class="select" name="loan_purpose" required>
-                <option value="">Выберите цель кредита</option>
-                <option value="миграция">миграция</option>
-                <option value="деҳқончилик">фермерство</option>
-                <option value="чорвачиликни ривожлантириш">развитие животноводства</option>
-                <option value="ҳунармандчилик">ремесленничество</option>
-                <option value="савдо">торговля</option>
-              </select>
+              <div class="form-group">
+                <label class="label">Совокупное количество просроченных дней</label>
+                <input type="number" class="input" name="cumulative_days" id = "cumulative" placeholder="Введите общее количество просрочек" required />
+                <small id="cumulative-error" style="color: red; display: none;">Количество просрочек должно быть от 0...</small>
+              </div>
             </div>
+
+            <div class="form-grid form-grid-2">
+              <div class="form-group">
+                <label class="label">Цель кредита</label>
+                <select class="select" name="loan_purpose" required>
+                  <option value="">Выберите цель кредита</option>
+                  <option value="миграция">миграция</option>
+                  <option value="ички туризмни ривожлантириш">развитие внутреннего туризма</option>
+                  <option value="таъмирлаш ишлари учун">ремонтные работы</option>
+                  <option value="энергия тежовчи ускуналар сотиб олиш">приобретение энергосберегающего оборудования</option>
+                  <option value="ишлаб чиқаришни ривожлантириш">развитие производства</option>
+                  <option value="деҳқончилик ва томорқа хўжалигини ривожлантириш">земледелие</option>
+                  <option value="ҳунармандчилик ва касаначиликни ривожлантириш">ремесленничество</option>
+                  <option value="чорвачиликни ривожлантириш">животноводство</option>
+                  <option value="оилавий ва шахсий эҳтиёжлар">семейные и личные потребности</option>
+                  <option value="савдони ривожлантириш">торговля</option>
+                  <option value="хизмат кўрсатишни ривожлантириш">развитие сферы услуг</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="label">Наличие активных долгов</label>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input type="radio" class="radio-input" name="active_debts" value="yes" id="yes" />
+                    <label for="yes">да</label>
+                  </div>
+                  <div class="radio-item">
+                    <input type="radio" class="radio-input" name="active_debts" value="no" id="no" />
+                    <label for="no">нет</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            </div>
+           
           </div>
 
           <button type="submit" class="predict-btn">Прогнозировать</button>
         </form>
       </div>
-    </div>
 
-<!-- Result Screen -->
+
+
+      <!-- Result Screen -->
     <div class="results-container">
       <div id="resultsScreen" class="card results-card {% if prediction %}{% else %}hidden{% endif %}">
         <div class="card-header results-header">
@@ -269,95 +287,11 @@
     </div>
 
     </br>
-    <!-- SHAP Plot
-    {% if prediction.shap_plot %}
-    <div class="card" style="max-width: 80rem; padding: 2rem; text-align: center;">
-      <h3 class="section-title">Почему модель приняла такое решение?</h3>
-      <img src="{{ prediction.shap_plot }}" alt="SHAP plot" style="max-width:100%; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
-    </div>
-    {% endif %} -->
+  
   </div>
+    </div>
 
-  <script>
-  const ageInput = document.getElementById("age");
-  const ageError = document.getElementById("age-error");
 
-  ageInput.addEventListener("input", function () {
-    if (this.value < 18 || this.value > 65) {
-      ageError.style.display = "block";
-    } else {
-      ageError.style.display = "none";
-    }
-  });
-
-  const familyInput = document.getElementById("family_members");
-  const familyError = document.getElementById("family-error");
-
-  familyInput.addEventListener("input", function () {
-    if (this.value < 1 || this.value > 8) {
-      familyError.style.display = "block";
-    } else {
-      familyError.style.display = "none";
-    }
-  });
-
-  const loanInput = document.getElementById("loan_amount");
-  const loanError = document.getElementById("loan-error");
-
-  loanInput.addEventListener("input", function () {
-    if (this.value < 100 || this.value > 8000) {
-      loanError.style.display = "block";
-    } else {
-      loanError.style.display = "none";
-    }
-  });
-
-  const cities = {
-    фергана: ["Коканд", "Бешарик", "Учкуприк", "Олтиарик", "Кува", "Яйпан"],
-    андижан: ["Избоскан", "Хужабод", "Кургонтепа", "Баликчи"],
-    наманган: ["Чуст", "Мингбулон", "Норин", "Поп", "Туракургон", "Учкургон", "Янгикургон"]
-  };
-
-  const cityMapping = {
-    "Коканд": "кукон шахри",
-    "Бешарик": "бешарик тумани",
-    "Учкуприк": "учкуприк тумани",
-    "Олтиарик": "олтиарик тумани",
-    "Кува": "кува тумани",
-    "Яйпан": "фаргона тумани",
-    
-    "Избоскан": "избоскан тумани",
-    "Хужабод": "хужаобод тумани",
-    "Кургонтепа": "кургонтепа тумани",
-    "Баликчи": "баликчи тумани",
-    
-    "Чуст": "чуст тумани",
-    "Мингбулон": "мингбулок тумани",
-    "Норин": "норин тумани",
-    "Поп": "поп тумани",
-    "Туракургон": "туракургон тумани",
-    "Учкургон": "учкургон тумани",
-    "Янгикургон": "янгикургон тумани"
-  };
-
-  const regionSelect = document.getElementById("region");
-  const citySelect = document.getElementById("city");
-
-  regionSelect.addEventListener("change", function () {
-    const region = this.value;
-    citySelect.innerHTML = "<option value=''>Выберите город</option>";
-
-    if (cities[region]) {
-      cities[region].forEach(city => {
-        const option = document.createElement("option");
-        option.value = cityMapping[city] || city.toLowerCase(); 
-        option.textContent = city; 
-        citySelect.appendChild(option);
-      });
-    }
-  });
-
-</script>
-
+  <script src="/static/script.js"></script>
 </body>
 </html>

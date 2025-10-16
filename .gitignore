@@ -6,3 +6,6 @@
 
 *.csv
 *.png
+/Partners/
+/models/
+/Rnd/
